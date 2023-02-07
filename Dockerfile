@@ -15,6 +15,10 @@ ARG GITLATEXDIFF_VERSION=1.6.0
 
 WORKDIR /home
 
+RUN apt-get update -q && \
+    # Install git (Required for git-latexdiff)
+    apt-get install -qqy wget
+
 # Fix for update-alternatives: error: error creating symbolic link '/usr/share/man/man1/rmid.1.gz.dpkg-tmp': No such file or directory
 # See https://github.com/debuerreotype/docker-debian-artifacts/issues/24#issuecomment-360870939
 RUN mkdir -p /usr/share/man/man1
