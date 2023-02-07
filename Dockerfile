@@ -95,4 +95,8 @@ RUN cd /tmp && wget https://www.tug.org/fonts/getnonfreefonts/install-getnonfree
 # update font index
 RUN luaotfload-tool --update
 
+RUN curl -s https://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh | sh \
+  && tlmgr update --self \
+  && tlmgr update --all
+
 WORKDIR /workdir
